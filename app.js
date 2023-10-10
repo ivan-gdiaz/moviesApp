@@ -22,7 +22,7 @@ app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 // MongoDB Atlas DB cluster connection
 mongoose
-  .connect("mongodb+srv://ivangdiaz:qazwsxedc@cluster0.6tkmcfn.mongodb.net/?retryWrites=true&w=majority",
+  .connect(process.env.DB_URI,
     { useNewUrlParser: true, useUnifiedTopology: true }
   )
   .then(() => debug("MongoDB Atlas DataBase connection successful"));
