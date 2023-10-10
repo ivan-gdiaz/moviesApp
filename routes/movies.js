@@ -10,9 +10,10 @@ var db = mongoose.connection;
 
 /* GET movies listing */
 router.get("/", function (req, res) {
-  Movie.find().exec(function (err, movies) {
-    if (err) res.status(500).send(err);
-    else res.status(200).json(movies);
+  Movie.find().then(function(movies){
+    res.status(200).json(movies)
+  }).catch(function(err){
+    res.status(500).send(err)
   });
 });
 
