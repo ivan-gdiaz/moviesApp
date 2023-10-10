@@ -5,7 +5,8 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var debug = require('debug')('moviesApp:server');
 
-require(‘dotenv’).config();
+//////NUEVO: Para poder usar variables de entorno
+require("dotenv").config();
 
 var mongoose = require("mongoose");
 
