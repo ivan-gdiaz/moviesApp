@@ -13,9 +13,11 @@ router.get("/:email", function (req, res) {
   Bookmark.find({ email: req.params.email })
     .sort("-addeddate")
     .populate("movie")
-    .exec(function (err, bookmarks) {
-      if (err) res.status(500).send(err);
-      else res.status(200).json(bookmarks);
+    .then(function (bookmarks) {
+      res.status(200).json(bookmarks);
+    })
+    .catch(function (err) {
+      res.status(500).send(err);
     });
 });
 
