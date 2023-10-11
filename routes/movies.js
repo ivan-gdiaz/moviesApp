@@ -25,4 +25,13 @@ router.get("/:id", function (req, res, next) {
   });
 });
 
+/* POST a new movie*/
+router.post("/", function (req, res) {
+  Movie.create(req.body, function (err, movieinfo) {
+    if (err) res.status(500).send(err);
+    else res.sendStatus(200);
+  });
+});
+
+
 module.exports = router;
